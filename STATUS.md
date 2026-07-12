@@ -6,9 +6,9 @@ rules_version: 2.4.0
 design_version: 2.4.0
 layout: single
 project_state: active
-updated_at: 2026-07-12T17:02:22+08:00
+updated_at: 2026-07-12T17:07:40+08:00
 resume:
-  updated_from_head: e886a8d6e82b15d45251b24a6f537aaff2637561
+  updated_from_head: ea9bf84a92f73c7610a1cfa2b2b9ed46faf28c66
   confidence: fresh
   next_actions: []
   do_not_do:
@@ -16,10 +16,10 @@ resume:
     - "Expand the importer into pet image generation; that remains hatch-pet's responsibility"
   blocked_on: []
 sync:
-  last_synced_at: 2026-07-12T17:02:22+08:00
-  verified_at: 2026-07-12T17:02:22+08:00
+  last_synced_at: 2026-07-12T17:07:40+08:00
+  verified_at: 2026-07-12T17:07:40+08:00
   verification_subjects:
-    - { kind: git, path: ".", ref: main, head: e886a8d6e82b15d45251b24a6f537aaff2637561, dirty: false }
+    - { kind: git, path: ".", ref: main, head: ea9bf84a92f73c7610a1cfa2b2b9ed46faf28c66, dirty: true }
   verification_evidence:
     - { kind: command, command: "python3 -m unittest discover -s skills/port-codex-pet/tests -v", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
     - { kind: command, command: "uvx coverage report --fail-under=80 (92%)", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
@@ -130,4 +130,9 @@ scope_deltas: []
 
 - Initial public Skill, runtime, deterministic importer, validation scripts,
   documentation, MIT license, and CI workflow.
+
+#### Fixed
+
+- Pin `astral-sh/setup-uv` to the published `v8.3.2` tag so GitHub Actions can
+  resolve the action.
 <!-- progress:changelog:end -->
