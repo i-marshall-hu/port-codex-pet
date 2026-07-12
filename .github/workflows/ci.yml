@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v8
+
+      - name: Python lint
+        run: uvx ruff check skills/port-codex-pet/scripts skills/port-codex-pet/tests
+
+      - name: Python format
+        run: uvx ruff format --check skills/port-codex-pet/scripts skills/port-codex-pet/tests
+
+      - name: Unit tests
+        run: python3 -m unittest discover -s skills/port-codex-pet/tests -v
+
+      - name: Coverage
+        run: |
+          uvx coverage run --branch --source=skills/port-codex-pet/scripts \
+            -m unittest discover -s skills/port-codex-pet/tests
+          uvx coverage report --show-missing --fail-under=80
+
+      - name: Runtime syntax
+        run: node --check skills/port-codex-pet/assets/runtime/codex-pet-player.js

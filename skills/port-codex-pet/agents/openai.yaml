@@ -1,0 +1,4 @@
+interface:
+  display_name: "Port Codex Pet"
+  short_description: "把 Codex Pet 安全移植到任意前端项目并接入事件动画"
+  default_prompt: "Use $port-codex-pet to install a validated Codex Pet into this frontend project."
