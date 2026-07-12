@@ -6,9 +6,9 @@ rules_version: 2.4.0
 design_version: 2.4.0
 layout: single
 project_state: active
-updated_at: 2026-07-12T17:07:40+08:00
+updated_at: 2026-07-12T17:10:13+08:00
 resume:
-  updated_from_head: ea9bf84a92f73c7610a1cfa2b2b9ed46faf28c66
+  updated_from_head: 2112c724b4c017c7ef62ed67e9c6440a14a42f4d
   confidence: fresh
   next_actions: []
   do_not_do:
@@ -16,10 +16,10 @@ resume:
     - "Expand the importer into pet image generation; that remains hatch-pet's responsibility"
   blocked_on: []
 sync:
-  last_synced_at: 2026-07-12T17:07:40+08:00
-  verified_at: 2026-07-12T17:07:40+08:00
+  last_synced_at: 2026-07-12T17:10:13+08:00
+  verified_at: 2026-07-12T17:10:13+08:00
   verification_subjects:
-    - { kind: git, path: ".", ref: main, head: ea9bf84a92f73c7610a1cfa2b2b9ed46faf28c66, dirty: true }
+    - { kind: git, path: ".", ref: agent/fix-setup-uv-tag, head: 2112c724b4c017c7ef62ed67e9c6440a14a42f4d, dirty: true }
   verification_evidence:
     - { kind: command, command: "python3 -m unittest discover -s skills/port-codex-pet/tests -v", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
     - { kind: command, command: "uvx coverage report --fail-under=80 (92%)", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
