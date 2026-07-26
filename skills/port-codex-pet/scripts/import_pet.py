@@ -13,7 +13,6 @@ from typing import Any
 
 from pet_contract import PetContractError, PetPackage, load_pet_package, sha256_file
 
-
 RUNTIME_SOURCE = (
     Path(__file__).resolve().parents[1] / "assets" / "runtime" / "codex-pet-player.js"
 )

@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-
 ATLAS_WIDTH = 1536
 ATLAS_HEIGHT = 2288
 CELL_WIDTH = 192

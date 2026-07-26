@@ -6,9 +6,9 @@ rules_version: 2.4.0
 design_version: 2.4.0
 layout: single
 project_state: active
-updated_at: 2026-07-26T17:53:08+08:00
+updated_at: 2026-07-27T01:22:16+08:00
 resume:
-  updated_from_head: 30bf67a1bc12adbd02753f4245116e73756c2758
+  updated_from_head: cc9cf56c682561976623742af8c7ceb04eaf0207
   confidence: fresh
   next_actions: []
   do_not_do:
@@ -16,11 +16,12 @@ resume:
     - "Expand the importer into pet image generation; that remains hatch-pet's responsibility"
   blocked_on: []
 sync:
-  last_synced_at: 2026-07-26T17:53:08+08:00
-  verified_at: 2026-07-26T17:53:08+08:00
+  last_synced_at: 2026-07-27T01:22:16+08:00
+  verified_at: 2026-07-27T01:22:16+08:00
   verification_subjects:
-    - { kind: git, path: ".", ref: marshall/ci-security-20260726, head: 30bf67a1bc12adbd02753f4245116e73756c2758, dirty: true }
+    - { kind: git, path: ".", ref: marshall/ci-security-20260726, head: cc9cf56c682561976623742af8c7ceb04eaf0207, dirty: true }
   verification_evidence:
+    - { kind: command, command: "ruff 0.16.0 check --fix + format；15 unittest；ruff check/format --check；node --check", result: "pass：修复升级后 Ruff 暴露的 9 个机械 import/noqa/SIM117 漂移项，无运行语义变化", verified_at: 2026-07-27T01:22:16+08:00 }
     - { kind: command, command: "zizmor 1.28.0 offline auditor + ruff check/format + 15 unittest + node --check + git diff --check", result: "pass：3 个 GitHub Action 固定到官方 commit SHA，checkout 不持久化凭据，过时 CI 自动取消；zizmor auditor low+ 0 findings；Python 与 runtime 门禁全绿", verified_at: 2026-07-26T17:53:08+08:00 }
     - { kind: command, command: "python3 -m unittest discover -s skills/port-codex-pet/tests -v", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
     - { kind: command, command: "uvx coverage report --fail-under=80 (92%)", result: pass, verified_at: 2026-07-12T17:02:22+08:00 }
@@ -133,6 +134,9 @@ scope_deltas: []
   documentation, MIT license, and CI workflow.
 
 #### Fixed
+
+- Restore compatibility with Ruff 0.16.0 by normalizing imports, removing stale
+  `noqa` directives, and flattening one nested context-manager assertion.
 
 - Pin all GitHub Actions to official commit SHAs, disable checkout credential
   persistence, and cancel superseded CI runs by workflow/ref.

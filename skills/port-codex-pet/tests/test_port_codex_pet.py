@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import json
 import io
+import json
 import struct
 import subprocess
 import sys
@@ -11,19 +11,19 @@ from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = SKILL_ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-import import_pet as import_pet_module  # noqa: E402
-from import_pet import import_pet, main as import_main  # noqa: E402
-from pet_contract import (  # noqa: E402
+import import_pet as import_pet_module
+from import_pet import import_pet
+from import_pet import main as import_main
+from pet_contract import (
     PetContractError,
     load_pet_package,
     read_webp_dimensions,
 )
-from validate_pet import main as validate_main  # noqa: E402
+from validate_pet import main as validate_main
 
 
 def write_vp8x_webp(path: Path, width: int = 1536, height: int = 2288) -> None:
@@ -330,11 +330,13 @@ class ImportPetTests(unittest.TestCase):
                 import_pet(**{**arguments, "asset_path": ""})
             with self.assertRaisesRegex(PetContractError, "cannot be '.'"):
                 import_pet(**{**arguments, "asset_path": "."})
-            with patch.object(
-                import_pet_module, "RUNTIME_SOURCE", root / "missing-runtime.js"
+            with (
+                patch.object(
+                    import_pet_module, "RUNTIME_SOURCE", root / "missing-runtime.js"
+                ),
+                self.assertRaisesRegex(PetContractError, "runtime is missing"),
             ):
-                with self.assertRaisesRegex(PetContractError, "runtime is missing"):
-                    import_pet(**arguments)
+                import_pet(**arguments)
 
             destination = target / "pets/pocky/pet.json"
             destination.mkdir(parents=True)
