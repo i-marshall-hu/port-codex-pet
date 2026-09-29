@@ -1,6 +1,7 @@
 ---
-tracking_type: durable-evidence
-doc_kind: historical-project-evidence
+tracking_type: code-dev
+doc_kind: status
+state_scope: historical-evidence
 schema_version: 2.4.0
 rules_version: 2.4.0
 design_version: 2.4.0
