@@ -1,13 +1,14 @@
 ---
-tracking_type: code-dev
-doc_kind: status
+tracking_type: durable-evidence
+doc_kind: historical-project-evidence
 schema_version: 2.4.0
 rules_version: 2.4.0
 design_version: 2.4.0
 layout: single
-project_state: active
+historical_project_state: active
+current_state_authority: agent-os:control-plane
 updated_at: 2026-07-27T22:48:27+08:00
-resume:
+historical_resume:
   updated_from_head: c95ef0c739aafced8da4bdc0e9f40afc67671b81
   confidence: fresh
   next_actions: []
@@ -31,10 +32,14 @@ promotion_thresholds: { status_lines: 250, features: 12, adrs: 8 }
 pending_promotions: []
 ---
 
-# Project Status
+# Project History And Delivery Evidence
+
+This document preserves the dated release evidence and decisions below. Its phase and
+resume fields are historical observations, not a live work queue. Current project state
+and follow-up actions belong to Agent OS (`orient --project port-codex-pet`).
 
 <!-- progress:resume:start -->
-## Resume Card
+## Historical Resume Card
 
 - Current focus: Initial open-source release of `port-codex-pet`.
 - Next: Accept field feedback and keep the public distribution synchronized with
